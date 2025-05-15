@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: docs/chap01.aux
+A level-1 auxiliary file: docs/chap02.aux
+A level-1 auxiliary file: docs/chap03.aux
+A level-1 auxiliary file: docs/chap04.aux
+A level-1 auxiliary file: docs/conclusion.aux
+The style file: gbt7714-numerical.bst
+A level-1 auxiliary file: docs/ack.aux
+A level-1 auxiliary file: docs/appendix1.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 150 items from 100.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: main.bib
+You've used 27 entries,
+            5374 wiz_defined-function locations,
+            1212 strings with 13232 characters,
+and the built_in function-call counts, 214787 in all, are:
+= -- 4151
+> -- 24960
+< -- 31481
++ -- 8740
+- -- 1510
+* -- 1151
+:= -- 29365
+add.period$ -- 86
+call.type$ -- 27
+change.case$ -- 188
+chr.to.int$ -- 7703
+cite$ -- 27
+duplicate$ -- 677
+empty$ -- 1918
+format.name$ -- 709
+if$ -- 56170
+int.to.chr$ -- 1
+int.to.str$ -- 28
+missing$ -- 0
+newline$ -- 163
+num.names$ -- 81
+pop$ -- 11759
+preamble$ -- 1
+purify$ -- 27
+quote$ -- 0
+skip$ -- 22084
+stack$ -- 0
+substring$ -- 9915
+swap$ -- 27
+text.length$ -- 560
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 289
+warning$ -- 0
+while$ -- 602
+width$ -- 0
+write$ -- 387
