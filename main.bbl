@@ -1,0 +1,163 @@
+\begin{thebibliography}{27}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
+
+\bibitem[Hamilton(1994)]{hamilton1994state}
+HAMILTON J~D.
+\newblock State-space models\allowbreak[J].
+\newblock Handbook of econometrics, 1994, 4: 3039-3080.
+
+\bibitem[Kim et~al.(2017)Kim and Nelson]{kim2017state}
+KIM C~J, NELSON C~R.
+\newblock State-space models with regime switching: classical and gibbs-sampling approaches with applications\allowbreak[M].
+\newblock MIT press, 2017.
+
+\bibitem[Choi(2023)]{choi2023urban_phd_environ}
+CHOI B.
+\newblock Urban temperature and electricity demand: probabilistic modeling and adaptive decision-making\allowbreak[D].
+\newblock Carnegie Mellon University, 2023.
+
+\bibitem[Dabush et~al.(2024)Dabush and Routtenberg]{dabush2024kalman_tracking_network_dynamic}
+DABUSH L, ROUTTENBERG T.
+\newblock Kalman filter for tracking network dynamic\allowbreak[C]//\allowbreak
+ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP).
+\newblock IEEE, 2024: 13216-13220.
+
+\bibitem[Särkkä et~al.(2023)Särkkä and Svensson]{Särkkä_Svensson_2023_textbook}
+SäRKKä S, SVENSSON L.
+\newblock Institute of mathematical statistics textbooks: Bayesian filtering and smoothing\allowbreak[M].
+\newblock 2nd ed.
+\newblock Cambridge University Press, 2023.
+
+\bibitem[Watts et~al.(1998)Watts and Strogatz]{watts1998collective}
+WATTS D~J, STROGATZ S~H.
+\newblock Collective dynamics of ‘small-world’networks\allowbreak[J].
+\newblock nature, 1998, 393\allowbreak (6684): 440-442.
+
+\bibitem[Gupta et~al.(1974)Gupta and Mehra]{gupta1974computational}
+GUPTA N, MEHRA R.
+\newblock Computational aspects of maximum likelihood estimation and reduction in sensitivity function calculations\allowbreak[J].
+\newblock IEEE transactions on automatic control, 1974, 19\allowbreak (6): 774-783.
+
+\bibitem[Neal et~al.(1998)Neal and Hinton]{neal1998view}
+NEAL R~M, HINTON G~E.
+\newblock A view of the em algorithm that justifies incremental, sparse, and other variants\allowbreak[M]//\allowbreak
+Learning in graphical models.
+\newblock Springer, 1998: 355-368.
+
+\bibitem[Shumway et~al.(1982)Shumway and Stoffer]{shumway1982approach}
+SHUMWAY R~H, STOFFER D~S.
+\newblock An approach to time series smoothing and forecasting using the em algorithm\allowbreak[J].
+\newblock Journal of time series analysis, 1982, 3\allowbreak (4): 253-264.
+
+\bibitem[Chouzenoux et~al.(2020)Chouzenoux and Elvira]{chouzenoux2020GraphEM}
+CHOUZENOUX E, ELVIRA V.
+\newblock Graphem: Em algorithm for blind kalman filtering under graphical sparsity constraints\allowbreak[C]//\allowbreak
+ICASSP 2020-2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP).
+\newblock IEEE, 2020: 5840-5844.
+
+\bibitem[Granger(1969)]{granger1969investigating}
+GRANGER C~W.
+\newblock Investigating causal relations by econometric models and cross-spectral methods\allowbreak[J].
+\newblock Econometrica: journal of the Econometric Society, 1969: 424-438.
+
+\bibitem[Ravazzi et~al.(2017)Ravazzi, Tempo, and Dabbene]{ravazzi2017learning}
+RAVAZZI C, TEMPO R, DABBENE F.
+\newblock Learning influence structure in sparse social networks\allowbreak[J].
+\newblock IEEE Transactions on Control of Network Systems, 2017, 5\allowbreak (4): 1976-1986.
+
+\bibitem[Zou et~al.(2005)Zou and Hastie]{zou2005regularization}
+ZOU H, HASTIE T.
+\newblock Regularization and variable selection via the elastic net\allowbreak[J].
+\newblock Journal of the Royal Statistical Society Series B: Statistical Methodology, 2005, 67\allowbreak (2): 301-320.
+
+\bibitem[Sharma et~al.(2021)Sharma, Elvira, Chouzenoux, and Majumdar]{sharma2021stock_prediction}
+SHARMA S, ELVIRA V, CHOUZENOUX E, et~al.
+\newblock Recurrent dictionary learning for state-space models with an application in stock forecasting\allowbreak[J].
+\newblock Neurocomputing, 2021, 450: 1-13.
+
+\bibitem[Dahiya et~al.(2021)Dahiya, Sharma, Sahnan, Goel, Chouzenoux, Elvira, Majumdar, Bandhakavi, and Chakraborty]{dahiya2021twitter_prediction}
+DAHIYA S, SHARMA S, SAHNAN D, et~al.
+\newblock Would your tweet invoke hate on the fly? forecasting hate intensity of reply threads on twitter\allowbreak[C]//\allowbreak
+Proceedings of the 27th ACM SIGKDD Conference on Knowledge Discovery \& Data Mining.
+\newblock 2021: 2732-2742.
+
+\bibitem[Elvira et~al.(2023)Elvira, Chouzenoux, Cerda, and Camps-Valls]{elvira2023GraphEM_in_climate}
+ELVIRA V, CHOUZENOUX E, CERDA J, et~al.
+\newblock Graphs in state-space models for granger causality in climate science\allowbreak[A].
+\newblock 2023.
+
+\bibitem[Elvira et~al.(2022)Elvira and Chouzenoux]{elvira2022GraphEM_TSP}
+ELVIRA V, CHOUZENOUX {\'E}.
+\newblock Graphical inference in linear-gaussian state-space models\allowbreak[J].
+\newblock IEEE Transactions on Signal Processing, 2022, 70: 4757-4771.
+
+\bibitem[Chouzenoux et~al.(2023)Chouzenoux and Elvira]{chouzenoux2023graph_it}
+CHOUZENOUX E, ELVIRA V.
+\newblock Graphit: Iterative reweighted l1 algorithm for sparse graph inference in state-space models\allowbreak[C]//\allowbreak
+ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP).
+\newblock IEEE, 2023: 1-5.
+
+\bibitem[Chouzenoux et~al.(2024)Chouzenoux and Elvira]{chouzenoux2024non_markov_lagrangeEM}
+CHOUZENOUX E, ELVIRA V.
+\newblock Graphical inference in non-markovian linear-gaussian state-space models\allowbreak[C]//\allowbreak
+ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP).
+\newblock IEEE, 2024: 13141-13145.
+
+\bibitem[Cox et~al.(2022)Cox and Elvira]{cox2022sparj_alg_journal}
+COX B, ELVIRA V.
+\newblock Parameter estimation in sparse linear-gaussian state-space models via reversible jump markov chain monte carlo\allowbreak[C]//\allowbreak
+2022 30th European Signal Processing Conference (EUSIPCO).
+\newblock IEEE, 2022: 797-801.
+
+\bibitem[Cox et~al.(2023)Cox and Elvira]{cox2023sparj_alg}
+COX B, ELVIRA V.
+\newblock Sparse bayesian estimation of parameters in linear-gaussian state-space models\allowbreak[J].
+\newblock IEEE Transactions on Signal Processing, 2023, 71: 1922-1937.
+
+\bibitem[Cox et~al.(2024)Cox, Chouzenoux, and Elvira]{cox2024graphgrad_TSP}
+COX B, CHOUZENOUX E, ELVIRA V.
+\newblock Graphgrad: Efficient estimation of sparse polynomial representations for general state-space models\allowbreak[A/OL].
+\newblock 2024.
+\newblock arXiv: \eprint{https://arxiv.org/abs/2411.15637}{2411.15637}.
+\newblock \url{https://arxiv.org/abs/2411.15637}.
+
+\bibitem[Chouzenoux et~al.(2024)Chouzenoux and Elvira]{chouzenoux2024DGLASSO}
+CHOUZENOUX E, ELVIRA V.
+\newblock Sparse graphical linear dynamical systems\allowbreak[J].
+\newblock Journal of Machine Learning Research, 2024, 25\allowbreak (223): 1-53.
+
+\bibitem[Tsampourakis et~al.(2022)Tsampourakis and Elvira]{tsampourakis2022alr_changepoint}
+TSAMPOURAKIS K, ELVIRA V.
+\newblock Approximating the likelihood ratio in linear-gaussian state-space models for change detection\allowbreak[C]//\allowbreak
+ICASSP 2022-2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP).
+\newblock IEEE, 2022: 5912-5916.
+
+\bibitem[Sharma et~al.(2023)Sharma, Chouzenoux, Elvira, and Majumdar]{sharma2023stock_later}
+SHARMA S, CHOUZENOUX {\'E}, ELVIRA V, et~al.
+\newblock A dynamical model for stock forecasting via deep recurrent dictionary learning\allowbreak[Z].
+\newblock 2023.
+
+\bibitem[Cui et~al.(2024)Cui and Djuri{\'c}]{cui2024inference_non_linear}
+CUI C, DJURI{\'C} P~M.
+\newblock Inference of time--varying graph topologies via gaussian processes\allowbreak[C]//\allowbreak
+ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP).
+\newblock IEEE, 2024: 13276-13280.
+
+\bibitem[Mohanty et~al.(2025)Mohanty, Mohamed, Ramanan, and Gebraeel]{mohanty2025iclr_granger}
+MOHANTY A, MOHAMED N, RAMANAN P, et~al.
+\newblock Federated granger causality learning for interdependent clients with state space representation\allowbreak[A/OL].
+\newblock 2025.
+\newblock arXiv: \eprint{https://arxiv.org/abs/2501.13890}{2501.13890}.
+\newblock \url{https://arxiv.org/abs/2501.13890}.
+
+\end{thebibliography}

@@ -1,0 +1,38 @@
+%%
+% 摘要信息
+% 本文档中前缀"c-"代表中文版字段, 前缀"e-"代表英文版字段
+% 摘要内容应概括地反映出本论文的主要内容，主要说明本论文的研究目的、内容、方法、成果和结论。要突出本论文的创造性成果或新见解，不要与引言相 混淆。语言力求精练、准确，以 300—500 字为宜。
+% 在摘要的下方另起一行，注明本文的关键词（3—5 个）。关键词是供检索用的主题词条，应采用能覆盖论文主要内容的通用技术词条(参照相应的技术术语 标准)。按词条的外延层次排列（外延大的排在前面）。摘要与关键词应在同一页。
+%%
+
+\cabstract{
+
+    本文探讨了线性高斯状态空间模型 (LGSSM) 中的参数估计问题，重点研究了不同图结构下的转移矩阵估计。我们提出了 GraphEM 算法，这是一个将图推理和正则化技术集成到期望最大化 (EM) 算法中的新颖框架。通过引入拉普拉斯、高斯和混合先验等正则化项的先验知识，GraphEM 扩展了传统的 EM 方法，使其能够处理更广泛的图属性，包括稀疏性、平滑度和块结构。
+
+    我们的贡献主要有三方面：(1) 我们对转移矩阵背景下的图推理进行了全面的分析，重点突出了不同图结构（例如小世界网络、无标度图）对参数估计的影响。(2) 我们引入了 GraphEM 的两个新变体，分别结合了高斯先验和混合拉普拉斯-高斯先验，从而增强了算法的灵活性和性能。 (3) 我们证明了组合不同的正则化项可以在不增加计算成本的情况下逼近最优解，这为正则化策略之间的权衡提供了新的见解。
+
+    在合成数据集和真实数据集上进行的大量实验验证了 GraphEM 的有效性。结果表明，该方法在跨多种图类型的估计精度和鲁棒性方面均优于传统方法。本研究提供的理论框架和实践见解为未来状态空间模型的图推理和正则化技术研究铺平了道路。
+
+    为了提高可重复性并促进进一步研究，我们在 \url{https://github.com/kdeng-gzcn/KalmanParamEstimation} 上提供了所提方法的开源实现以及实验代码和数据集。
+
+}
+% 中文关键词(每个关键词之间用“，”分开,最后一个关键词不打标点符号。)
+\ckeywords{卡尔曼滤波，EM算法，近端优化，图模型}
+
+\eabstract{
+    % % 英文摘要及关键词内容应与中文摘要及关键词内容相同。中英文摘要及其关键词各置一页内。
+    % Artificial Neuron Network (ANN) simulates human being's brain function and build the network structure. Convolutional Neural Network (CNN) have many advantage, such as ……
+    % (2) This paper introduces the common pretreatment method of image, such as collecting image, normalization, graying and binarization. And apply these to the handwritten numeral recognition experiment and handwritten numerals writer recognition experiments.
+
+    This paper addresses the problem of parameter estimation in Linear Gaussian State Space Models (LGSSMs) with a focus on estimating the transition matrix under various graph structures. We propose the GraphEM algorithm, a novel framework that integrates graphical inference and regularization techniques into the Expectation-Maximization (EM) algorithm. By incorporating prior knowledge through regularization terms such as Laplace, Gaussian, and mixed priors, GraphEM extends the traditional EM approach to handle a wider range of graph properties, including sparsity, smoothness, and block structures. 
+
+    Our contributions are threefold: (1) We provide a comprehensive analysis of graphical inference in the context of transition matrices, highlighting the impact of different graph structures (e.g., small-world, scale-free) on parameter estimation. (2) We introduce two new variants of GraphEM, incorporating Gaussian and mixed Laplace-Gaussian priors, which enhance the algorithm's flexibility and performance. (3) We demonstrate that combining different regularization terms can approximate the optimal solution without additional computational cost, offering new insights into the trade-offs between regularization strategies.
+
+    Extensive experiments on synthetic and real-world datasets validate the effectiveness of GraphEM. Our results show that the proposed method outperforms traditional approaches in terms of estimation accuracy and robustness across diverse graph types. The theoretical framework and practical insights provided in this work pave the way for future research in graphical inference and regularization techniques for state space models. 
+
+    To promote reproducibility and facilitate further research, we provide an open-source implementation of the proposed methods, along with experimental code and datasets, at \url{https://github.com/kdeng-gzcn/KalmanParamEstimation}.
+
+}
+% 英文文关键词(每个关键词之间用,分开, 最后一个关键词不打标点符号。)
+\ekeywords{Kalmen Filter, EM Algorithm, Graphical Inference, Proximal Optimization}
+

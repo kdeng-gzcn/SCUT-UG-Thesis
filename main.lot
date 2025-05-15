@@ -1,0 +1,12 @@
+\addvspace {10.0pt}
+\addvspace {10.0pt}
+\addvspace {10.0pt}
+\contentsline {table}{\numberline {3-1}{\ignorespaces 常见凸约束集合及其投影算子示例。}}{18}{table.caption.17}%
+\contentsline {table}{\numberline {3-2}{\ignorespaces 先验类型、正则项及其在尺度参数 \(\vartheta > 0\) 下的近端算子示例。}}{18}{table.caption.18}%
+\addvspace {10.0pt}
+\contentsline {table}{\numberline {4-1}{\ignorespaces 汽车模型的 EM 算法结果。基线负对数似然为 \(\mathcal {L}_T({\bm {\theta }}) = -261.989\)。}}{21}{table.caption.20}%
+\contentsline {table}{\numberline {4-2}{\ignorespaces 不同图结构在各类正则方法下的实验结果。每种图类型中加粗的数值表示最佳结果。}}{26}{table.caption.29}%
+\addvspace {10.0pt}
+\addvspace {10.0pt}
+\addvspace {10.0pt}
+\addvspace {10.0pt}

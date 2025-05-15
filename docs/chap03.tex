@@ -1,0 +1,223 @@
+% \chapter{基于卷积神经的手写数字及写字人识别算法设计}
+% \section{输入输出层的设计}
+% \section{隐藏层的设计}
+% \section{本章小结}
+
+\chapter{GraphEM 算法}
+
+\section{引言}
+
+本节中，我们提出了一个通用框架，用于在适当的先验假设下估计线性高斯状态空间模型（LGSSM）的转移矩阵 \(\mathbf{A}\)。我们的目标是寻找 \(\widehat{\mathbf{A}}\)，使得：
+\begin{align}
+    \widehat{\mathbf{A}} = \arg \max_{\mathbf{A}} p(\mathbf{A} \mid \mathbf{y}_{1:T}), \label{eq: GraphEM argmax}
+\end{align}
+其中：
+\begin{itemize}
+    \item 由贝叶斯法则得：\(p(\mathbf{A} \mid \mathbf{y}_{1:T}) \propto p(\mathbf{y}_{1:T} \mid \mathbf{A}) p(\mathbf{A})\)。
+\end{itemize}
+
+回忆在未引入先验信息之前，对数似然函数的下界由式~\eqref{eq: ineq for EM final}给出：
+\begin{align}
+    \log p(\mathbf{y}_{1:T} \mid \mathbf{A}) \ge \mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)})。
+\end{align}
+
+为了引入先验信息，我们为 EM 框架导出一个新的下界：
+\begin{align}
+    \log p(\mathbf{y}_{1:T} \mid \mathbf{A}) + \log p(\mathbf{A}) \ge \mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)}) + \log p(\mathbf{A})。 \label{eq: ineq for GraphEM}
+\end{align}
+
+为适应最小化问题，我们引入新的记号。令损失函数为负对数似然：
+\begin{align}
+    \mathcal{L}_T(\mathbf{A}) \triangleq \mathcal{L}_0(\mathbf{A}) + \mathcal{L}_{1:T}(\mathbf{A})，
+\end{align}
+其中：
+\begin{itemize}
+    \item \(\mathcal{L}_0(\mathbf{A}) = -\log p(\mathbf{A})\) 是先验损失项，
+    \item \(\mathcal{L}_{1:T}(\mathbf{A}) = -\log p(\mathbf{y}_{1:T} \mid \mathbf{A})\) 是似然损失项。
+\end{itemize}
+
+采用该记号，我们的优化目标可由式~\eqref{eq: GraphEM argmax}重写为：
+\begin{align}
+    \widehat{\mathbf{A}} = \arg \min_{\mathbf{A}} \mathcal{L}_T(\mathbf{A})。
+\end{align}
+
+我们引入一个新的上界作为 GraphEM 算法中的目标函数：
+\begin{align}
+    \mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)}) \triangleq -\mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)}) + \lambda \, \mathcal{L}_0(\mathbf{A})， \label{eq: new upper bound for GraphEM}
+\end{align}
+其中 \(\lambda\) 用于控制先验损失项 \(\mathcal{L}_0(\mathbf{A})\) 的权重。
+
+利用新记号重写式~\eqref{eq: ineq for GraphEM}，并改变不等号方向，可得上界形式的 EM 结构：
+\begin{align}
+    \mathcal{L}_T(\mathbf{A}) \le \mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)})。
+\end{align}
+
+采用目标函数 \(\mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)})\)，我们提出 GraphEM 算法，如算法~\ref{alg: abstract GraphEM algorithm} 所示。
+
+\begin{algorithm}[tb]
+    \caption{简略 GraphEM 算法}
+    \label{alg: abstract GraphEM algorithm}
+    \begin{algorithmic}[1]
+        \ENSURE{\(\mathbf{A}^{(N)}\)}
+        \STATE \(\mathbf{A}^{(0)} \gets \text{随机初始化}\)
+        \FOR{\(n = 0, 1, \dots, N-1\)}
+            \STATE E 步骤：计算 \(\mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)})\)。
+            \STATE M 步骤：\(\mathbf{A}^{(n+1)} \gets \arg \min_{\mathbf{A}} \mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)})\)。
+        \ENDFOR
+    \end{algorithmic}
+\end{algorithm}
+
+\section{E 步骤中的计算}
+
+本节中，我们专注于计算目标函数 \(\mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)})\)。
+
+回忆，对于线性高斯状态空间模型（LGSSM），下界 \(\mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)})\) 由式~\eqref{eq: Q for LGSSM}给出。由于我们只关心 \(\mathbf{A}\)，该表达式可简化为：
+\begin{align}
+    \mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)}) = - \frac{T}{2} \tr \left\{ \mathbf{Q}^{-1} \left[ \boldsymbol{\Sigma} - \mathbf{C} \mathbf{A}^{\mathsf{T}} - \mathbf{A} \mathbf{C}^{\mathsf{T}} + \mathbf{A} \boldsymbol{\Phi} \mathbf{A}^{\mathsf{T}} \right] \right\} + \constA,
+\end{align}
+其中：
+\begin{itemize}
+    \item \(\boldsymbol{\Sigma} = \boldsymbol{\Sigma}(\mathbf{A}^{(n)})\)，由式~\eqref{eq: middle Sigma} 计算，
+    \item \(\boldsymbol{\Phi} = \boldsymbol{\Phi}(\mathbf{A}^{(n)})\)，由式~\eqref{eq: middle Phi} 计算，
+    \item \(\mathbf{C} = \mathbf{C}(\mathbf{A}^{(n)})\)，由式~\eqref{eq: middle C} 计算，
+    \item \(\constA\) 表示与 \(\mathbf{A}\) 无关的常数项。
+\end{itemize}
+
+利用式~\eqref{eq: new upper bound for GraphEM}，一旦评估出 \(\mathcal{L}_0(\mathbf{A})\)，我们便可以计算 \(\mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)})\)。这完成了 E 步骤中目标函数的计算。
+
+\section{M 步骤中的优化}
+
+本节的目标是找到使目标函数 \(\mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)})\) 最小化的矩阵 \(\mathbf{A}\)。
+
+在标准的 EM 算法中，该优化问题通常具有闭式解。然而，在我们的目标函数中引入了先验项，使问题变得更加复杂，因此需要采用专门的优化方法。这里，我们提出一种适用于该修正 EM 结构的求解方法。
+
+\subsection{近端算子}
+
+设 \( f: \mathbb{R}^{n \times n} \to \mathbb{R} \) 是一个适当的、凸的、下半连续的函数。函数 \( f \) 在点 \(\tilde{\mathbf{A}} \in \mathbb{R}^{n \times n}\) 的\textit{近端算子}定义为：
+\begin{align}
+    \text{prox}_{f}(\tilde{\mathbf{A}}) = \arg\min_{\mathbf{A}} \left( f(\mathbf{A}) + \frac{1}{2} \| \mathbf{A} - \tilde{\mathbf{A}} \|^2_F \right)。
+\end{align}
+
+我们的目标函数由两项组成。首先，我们推导第一项 \(-\mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)})\) 的近端算子，其形式如下：
+\begin{align}
+    \mathrm{prox}_{-\vartheta\mathcal{Q}(\tilde{\mathbf{A}}, \mathbf{A}^{(n)})} (\tilde{\mathbf{A}}) = \mathrm{lyapuov} \left( \vartheta \mathbf{Q}^{-1}, \boldsymbol{\Phi}^{-1}, \tilde{\mathbf{A}} \boldsymbol{\Phi}^{-1} + \vartheta \mathbf{Q}^{-1} \mathbf{C} \boldsymbol{\Phi}^{-1} \right),
+\end{align}
+其中：
+\begin{itemize}
+    \item \(\vartheta > 0\) 是缩放参数，
+    \item \(\mathrm{lyapuov}(X, Y, Z)\) 表示 Lyapunov 方程 \(XW + WY = Z\) 的解。
+\end{itemize}
+
+进一步地，若 \(\mathbf{Q} = \mathbf{I}_{n} \sigma^2_{\mathbf{Q}}\)，则近端算子可简化为：
+\begin{align}
+    \mathrm{prox}_{-\vartheta\mathcal{Q}(\tilde{\mathbf{A}}, \mathbf{A}^{(n)})} (\tilde{\mathbf{A}}) = \left( \frac{\vartheta\, T}{\sigma^2_{\mathbf{Q}}} \mathbf{C} + \tilde{\mathbf{A}} \right) \left( \frac{\vartheta}{\sigma^2_{\mathbf{Q}}} \boldsymbol{\Phi} + \mathbf{I}_{n} \right)^{-1},
+\end{align}
+其中：
+\begin{itemize}
+    \item \(\sigma^2_{\mathbf{Q}} > 0\) 是过程噪声的方差，
+    \item \(I_{n} \in \mathbb{R}^{n \times n}\) 是单位矩阵。
+\end{itemize}
+
+\subsection{Douglas-Rachford 迭代法}
+
+我们考虑如下优化问题：
+\begin{equation}
+    \min_{\mathbf{A}} \mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)}) \equiv \min_{\mathbf{A}} -\mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)}) + \mathcal{L}_0(\mathbf{A})。
+\end{equation}
+
+通过定义：
+\begin{equation}
+    f_1(\mathbf{A}) \triangleq -\mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)}), \quad f_2(\mathbf{A}) \triangleq \mathcal{L}_0(\mathbf{A}),
+\end{equation}
+该问题可以使用 Douglas-Rachford 迭代法求解，其形式如下：
+\begin{equation}
+    \mathbf{A}^{(i+1)} = \mathbf{A}^{(i)} + \alpha \left( \operatorname{prox}_{\vartheta f_1} \big(2 \operatorname{prox}_{\vartheta f_2}(\mathbf{A}^{(i)}) - \mathbf{A}^{(i)} \big) - \operatorname{prox}_{\vartheta f_2}(\mathbf{A}^{(i)}) \right),
+\end{equation}
+其中我们设置 \(\alpha = 1\)。
+
+在我们的具体问题中，两个近端算子分别为：
+\begin{align}
+    \operatorname{prox}_{\vartheta f_1}(\mathbf{A}^{(i)}) &\triangleq \arg\min_{\mathbf{A}} \left( -\mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)}) + \frac{1}{2\vartheta} \| \mathbf{A} - \mathbf{A}^{(i)} \|^2 \right), \\
+    \operatorname{prox}_{\vartheta f_2}(\mathbf{A}^{(i)}) &\triangleq \arg\min_{\mathbf{A}} \left( \mathcal{L}_0(\mathbf{A}) + \frac{1}{2\vartheta} \| \mathbf{A} - \mathbf{A}^{(i)} \|^2 \right),
+\end{align}
+其中 \(\operatorname{prox}_{\vartheta f_1}(\mathbf{A}^{(i)})\) 和 \(\operatorname{prox}_{\vartheta f_2}(\mathbf{A}^{(i)})\) 的计算方法可参考前一节以及表~\ref{tab: reg prox table}。
+
+Douglas-Rachford 方法在解决结构化优化问题中表现出色，适用于凸和非凸场景。用于 M 步优化的显式迭代步骤列于算法~\ref{alg: Douglas-Rachford} 中。
+
+\begin{algorithm}[tb]
+    \caption{M 步中的 Douglas-Rachford 迭代法}
+    \label{alg: Douglas-Rachford}
+    \begin{algorithmic}[1]
+        \ENSURE{\(\mathbf{A}^{(n+1)}\).}
+        \STATE \(\mathbf{A}^{(0)} \gets \mathbf{A}^{(n)}\)。
+        \FOR{\(i = 0, 1, 2, \dots\)}
+            \STATE 计算 \(\mathbf{Y}^{(i)} = \operatorname{prox}_{\vartheta f_2}(\mathbf{A}^{(i)})\)。
+            \STATE 计算 \(\mathbf{Z}^{(i)} = \operatorname{prox}_{\vartheta f_1}(2\mathbf{Y}^{(i)} - \mathbf{A}^{(i)})\)。
+            \STATE 更新 \(\mathbf{A}^{(i+1)} \gets \mathbf{A}^{(i)} + \lambda (\mathbf{Z}^{(i)} - \mathbf{Y}^{(i)})\)。 
+        \ENDFOR
+        \STATE \(\mathbf{A}^{(n+1)} \gets \mathbf{A}^{(i)}\)。
+    \end{algorithmic}
+\end{algorithm}
+
+\section{先验正则化}
+
+在 GraphEM 算法中，先验正则化在优化过程中起着关键作用，有助于提升稳定性和性能。本节将介绍用于算法中的稳定性约束及多种可选的正则项。这些约束与正则项对于引导优化方向至关重要，能够确保转移矩阵 \(\mathbf{A}\) 满足期望的性质，如稀疏性、平滑性或结构限制等。
+
+\subsection{稳定性约束}
+
+为了确保算法的稳定性，我们对初始转移矩阵 \(\mathbf{A}\) 施加约束。具体而言，我们要求 \(\mathbf{A}\) 的谱范数被一个常数 \(\delta < 1\) 所约束。该约束确保系统动力学保持稳定，并使优化过程具有良好的收敛性。约束集合 \(\mathcal{S}\) 定义如下：
+\begin{align}
+    \mathcal{S} = \left\{ \mathbf{A} \in \mathbb{R}^{n \times n} \mid \| \mathbf{A} \|_2 \le \delta < 1 \right\},
+\end{align}
+其中 \(\delta \in (0, 1)\) 是用户设定的参数，用于控制系统的稳定性。
+
+表~\ref{tab: convex constrain table} 给出了常见凸约束集合的示例及其对应的投影算子。这些约束对于在优化过程中保持转移矩阵 \(\mathbf{A}\) 位于可行区域内至关重要。
+
+\begin{table}[tb]
+    \centering
+    \caption{常见凸约束集合及其投影算子示例。}
+    \label{tab: convex constrain table}
+    \begin{tabular}{lll}
+        \toprule
+        \textbf{约束类型} & \(\mathcal{S}\) & \(\mathrm{Proj}_\mathcal{S} (\mathbf{A})\) \\
+        \midrule
+        谱范数约束 & \(\| \mathbf{A} \|_2 \le \delta\) & \(\mathbf{U}^{\mathsf{T}} \mathrm{diag}\left( \left( \mathrm{sign}(s_i) \min(|s_i|, \delta) \right)_{i \le n} \right) \mathbf{V}\) \\
+        \addlinespace
+        元素范围约束 & \(\left( a_{ij} \in [a_{\min}, a_{\max} ] \right)_{i, j\le n}\) & \(\left( \min \left( \max \left( a_{ij}, a_{\min} \right) , a_{\max} \right) \right)_{i, j \le n}\) \\
+        \addlinespace
+        Frobenius 范数约束 & \(\| \mathbf{A} \|_F \le \delta\) & \(\left( a_{ij}(1 - \frac{\delta}{\max (\| \mathbf{A} \|_F, \delta)}) \right)_{i, j \le n}\) \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{正则项}
+
+除了稳定性约束外，我们还引入惩罚项以对转移矩阵 \(\mathbf{A}\) 进行正则化。这些惩罚项来源于对 \(\mathbf{A}\) 结构的先验知识，并以 \(\mathcal{L}_0(\mathbf{A})\) 的形式融入目标函数中。不同的正则项鼓励 \(\mathbf{A}\) 具备不同的性质，例如稀疏性、块稀疏性或平滑性等。
+
+表~\ref{tab: reg prox table} 列举了常用的先验类型、对应的正则项 \(\mathcal{L}_0(\mathbf{A})\) 及其相关的近端算子。这些正则项在引导优化过程中发挥着关键作用，确保所估计的转移矩阵 \(\mathbf{A}\) 与其潜在图结构保持一致。
+
+\begin{table}[tb]
+    \centering
+    \caption{先验类型、正则项及其在尺度参数 \(\vartheta > 0\) 下的近端算子示例。}
+    \label{tab: reg prox table}
+    \begin{tabular}{@{}p{1.8cm}p{4.1cm}p{8cm}@{}}
+        \toprule
+        \textbf{先验类型} & \textbf{\(\mathcal{L}_0(\mathbf{A})\)} & \textbf{\(\text{prox}_{\vartheta \mathcal{L}_0}(\mathbf{A})\)} \\ 
+        \midrule
+        Laplace & \(\|\mathbf{A}\|_1\) & \(\left(\text{sign}(a_{ij}) \max(0, |a_{ij}| - \lambda\vartheta)\right)_{i, j \le n}\) \\ 
+        \addlinespace
+        Block-Laplace & \(\|\mathbf{A}\|_{2, 1} = \sum_{b=1}^B \|\mathbf{a}(b)\|_2\) & \(\left(\left(1 - \frac{\lambda\vartheta}{\max(\|\mathbf{a}(b)\|_2, \lambda\vartheta)}\right)\mathbf{a}(b)\right)_{b \le B}\) \\ 
+        \addlinespace
+        Gaussian & \(\frac{1}{2} \|\mathbf{A}\|_F^2\) & \(\left(\frac{a_{ij}}{1+\lambda\vartheta}\right)_{i, j \le n}\) \\ 
+        \addlinespace
+        Laplace + Gaussian & \(\|\mathbf{A}\|_1 + \frac{1}{2} \|\mathbf{A}\|_F^2\) & \(\left(\text{sign}\left(\frac{a_{ij}}{1+\lambda\vartheta}\right) \max\left(0, |\frac{a_{ij}}{1+\lambda\vartheta}| - \frac{\lambda\vartheta}{1+\lambda\vartheta}\right)\right)_{i, j \le n}\) \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+稳定性约束与正则项对于确保 GraphEM 算法产生具有意义且可解释的结果至关重要。稳定性约束保证了系统动力学的稳定性，而正则项则融入了关于转移矩阵 \(\mathbf{A}\) 结构的先验知识。
+
+这些先验在处理不同类型图结构时尤其有用，例如小世界网络、无标度网络或二部图等，有助于算法适应图结构的特定性质。这种适配性使得算法能够有效捕捉图中节点之间的复杂关系，从而提升推断的准确性。
+
+通过结合稳定性约束与正则项，GraphEM 算法为估计转移矩阵提供了一个灵活的框架，可广泛应用于时间序列分析、网络推断等多个领域。正则项的选择依赖于具体问题和对转移矩阵性质的需求，从而使该算法能够高度适配不同应用场景，尤其是在面对具有不同连接模式和拓扑结构的图时，能够更精确地捕捉潜在的动态过程。
+

@@ -1,0 +1,39 @@
+\contentsline {chapter}{摘\hspace {\ccwd }要}{I}{section*.4}%
+\contentsline {paragraph}{\heiti {关键词：}}{I}{paragraph*.5}%
+\contentsline {chapter}{Abstract}{II}{section*.6}%
+\contentsline {paragraph}{\textbf {Keywords:}}{II}{paragraph*.7}%
+\contentsline {chapter}{目\hspace {\ccwd }录}{III}{section*.8}%
+\contentsline {chapter}{插图目录}{V}{section*.9}%
+\contentsline {chapter}{表格目录}{VI}{section*.10}%
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}绪论}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}问题背景}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}现有方法}{1}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}创新方法}{1}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}相关文献}{2}{section.1.2}%
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}状态空间模型}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}状态空间模型}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}用于最优过滤的贝叶斯推断}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}关键边际分布}{4}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}线性高斯状态空间模型}{5}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}卡尔曼滤波器}{6}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}卡尔曼平滑器}{7}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}状态空间模型中的参数估计}{7}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}具有缺失参数的线性高斯状态空间模型}{9}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}梯度下降算法}{9}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}EM 算法}{10}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}GraphEM 算法}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}引言}{14}{section.3.1}%
+\contentsline {section}{\numberline {3.2}E 步骤中的计算}{15}{section.3.2}%
+\contentsline {section}{\numberline {3.3}M 步骤中的优化}{15}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}近端算子}{16}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Douglas-Rachford 迭代法}{16}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}先验正则化}{17}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}稳定性约束}{17}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}正则项}{18}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}数值实验}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}汽车的动态模型}{20}{section.4.1}%
+\contentsline {section}{\numberline {4.2}不同图结构下的正则化分析}{24}{section.4.2}%
+\contentsline {chapter}{结论}{29}{chapter*.32}%
+\contentsline {chapter}{参考文献}{30}{chapter*.33}%
+\contentsline {chapter}{致谢}{33}{chapter*.34}%
+\contentsline {chapter}{\numberline {附录 A\hspace {.3em}}其他图类型}{34}{appendix.A}%
