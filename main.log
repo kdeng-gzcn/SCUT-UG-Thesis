@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.23)  15 MAY 2025 11:22
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.23)  26 MAY 2025 20:27
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1934,8 +1934,8 @@ Overfull \hbox (1.29141pt too wide) in paragraph at lines 317--318
  []
 
 
-Overfull \hbox (51.43985pt too wide) in paragraph at lines 319--320
-[]\TU/TeXGyreTermesX(0)/m/it/12.045 GraphEM Gaussian \TU/AdobeSongStd-Light.otf(0)/m/n/12.045 方 法 相 比 标 准 \TU/TeXGyreTermesX(0)/m/n/12.045 EM \TU/AdobeSongStd-Light.otf(0)/m/n/12.045 稍 有 提 升，|  但 整 体 效 果 不 如 \TU/TeXGyreTermesX(0)/m/n/12.045 Laplace \TU/AdobeSongStd-Light.otf(0)/m/n/12.045 及 \TU/TeXGyreTermesX(0)/m/n/12.045 Laplace+Gaussian
+Overfull \hbox (0.4895pt too wide) in paragraph at lines 319--321
+[]\TU/TeXGyreTermesX(0)/m/it/12.045 GraphEM Gaussian \TU/AdobeSongStd-Light.otf(0)/m/n/12.045 方 法 相 比 标 准 \TU/TeXGyreTermesX(0)/m/n/12.045 EM \TU/AdobeSongStd-Light.otf(0)/m/n/12.045 稍 有 提 升，|  但 整 体 效 果 不 如 \TU/TeXGyreTermesX(0)/m/n/12.045 Laplace \TU/AdobeSongStd-Light.otf(0)/m/n/12.045 及 \TU/TeXGyreTermesX(0)/m/n/12.045 Laplace 
  []
 
 File: fig/block diagonal/neg_log_likelihood.pdf Graphic file (type pdf)
@@ -2133,4 +2133,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  125i,21n,121p,1174b,780s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (47 pages, 496212 bytes).
+Output written on main.xdv (47 pages, 496228 bytes).

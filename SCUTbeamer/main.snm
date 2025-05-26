@@ -1,0 +1,22 @@
+\beamer@slide {fig: LGSSM 流程图}{13}
+\beamer@slide {eq: ineq for EM}{16}
+\beamer@slide {eq: full lower bound}{17}
+\beamer@slide {eq: ineq for EM final}{18}
+\beamer@slide {eq: Q for LGSSM}{20}
+\beamer@slide {eq: middle Sigma}{21}
+\beamer@slide {eq: middle Phi}{21}
+\beamer@slide {eq: middle B}{21}
+\beamer@slide {eq: middle C}{21}
+\beamer@slide {eq: middle D}{21}
+\beamer@slide {eq: EM-M m0}{22}
+\beamer@slide {eq: EM-M P0}{22}
+\beamer@slide {eq: EM-M A}{22}
+\beamer@slide {eq: EM-M Q}{22}
+\beamer@slide {eq: EM-M H}{22}
+\beamer@slide {eq: EM-M R}{22}
+\beamer@slide {eq: GraphEM argmax}{23}
+\beamer@slide {eq: ineq for GraphEM}{23}
+\beamer@slide {tab: reg prox table}{34}
+\beamer@slide {tab: prior results for block-diag}{41}
+\beamer@slide {fig: neg log likelihood}{44}
+\beamer@slide {fig: graph comparison}{45}

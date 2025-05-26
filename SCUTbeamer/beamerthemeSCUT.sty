@@ -28,14 +28,33 @@
 \usepackage[labelsep=space]{caption}
 \usepackage[font=footnotesize]{subcaption} % 用于插入子图片
 
+\usepackage{algorithm}
+\usepackage{algorithmic} % 用于算法环境
+
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\q}{\mathbf{q}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\m}{\mathbf{m}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathcal{N}}
+
+\newcommand{\btheta}{\boldsymbol{\theta}}
+
+\newcommand{\tr}{\textrm{tr}}
+\newcommand{\constA}{\mathrm{ct.}_{\mathbf{A}}}
 
 % % 时间设置
 \usepackage{datetime}
 
 % % 字体设置
 \usepackage{fontspec}
-\setmonofont{Consolas}
-\usepackage{amsmath, bm} % 用于设置数学公式字体
+% \setmonofont{Consolas}
+\setmonofont{Courier New}
+\usepackage{amsmath} % 用于设置数学公式字体
+\usepackage{bm}
 \usepackage{newtxmath}
 
 \setCJKmainfont{AdobeSongStd-Light.otf}

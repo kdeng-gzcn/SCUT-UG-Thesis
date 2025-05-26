@@ -1,0 +1,52 @@
+\begin{thebibliography}{MMRG25}
+
+\bibitem[CD24]{cui2024inference_non_linear}
+Chen Cui and Petar~M Djuri{\'c}.
+\newblock Inference of time--varying graph topologies via gaussian processes.
+\newblock In {\em ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, pages 13276--13280. IEEE, 2024.
+
+\bibitem[Cho23]{choi2023urban_phd_environ}
+Byeongseong Choi.
+\newblock {\em Urban temperature and electricity demand: probabilistic modeling and adaptive decision-making}.
+\newblock PhD thesis, Carnegie Mellon University, 2023.
+
+\bibitem[DR24]{dabush2024kalman_tracking_network_dynamic}
+Lital Dabush and Tirza Routtenberg.
+\newblock Kalman filter for tracking network dynamic.
+\newblock In {\em ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, pages 13216--13220. IEEE, 2024.
+
+\bibitem[Ham94]{hamilton1994state}
+James~D Hamilton.
+\newblock State-space models.
+\newblock {\em Handbook of econometrics}, 4:3039--3080, 1994.
+
+\bibitem[KN17]{kim2017state}
+Chang-Jin Kim and Charles~R Nelson.
+\newblock {\em State-space models with regime switching: classical and Gibbs-sampling approaches with applications}.
+\newblock MIT press, 2017.
+
+\bibitem[MMRG25]{mohanty2025iclr_granger}
+Ayush Mohanty, Nazal Mohamed, Paritosh Ramanan, and Nagi Gebraeel.
+\newblock Federated granger causality learning for interdependent clients with state space representation, 2025.
+
+\bibitem[SCEM23]{sharma2023stock_later}
+Shalini Sharma, {\'E}milie Chouzenoux, V{\'\i}ctor Elvira, and Angshul Majumdar.
+\newblock A dynamical model for stock forecasting via deep recurrent dictionary learning.
+\newblock 2023.
+
+\bibitem[SS23]{Särkkä_Svensson_2023_textbook}
+Simo Särkkä and Lennart Svensson.
+\newblock {\em Bayesian Filtering and Smoothing}.
+\newblock Institute of Mathematical Statistics Textbooks. Cambridge University Press, 2 edition, 2023.
+
+\bibitem[TE22]{tsampourakis2022alr_changepoint}
+Kostas Tsampourakis and V{\'\i}ctor Elvira.
+\newblock Approximating the likelihood ratio in linear-gaussian state-space models for change detection.
+\newblock In {\em ICASSP 2022-2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, pages 5912--5916. IEEE, 2022.
+
+\bibitem[WS98]{watts1998collective}
+Duncan~J Watts and Steven~H Strogatz.
+\newblock Collective dynamics of ‘small-world’networks.
+\newblock {\em nature}, 393(6684):440--442, 1998.
+
+\end{thebibliography}
