@@ -115,7 +115,7 @@
 
 其中 \(\mathbf{q}_{k-1}\) 是一个离散时间高斯噪声过程，其均值为零，协方差矩阵 \(\mathbf{Q}\) 定义为：
 
-\begin{align}
+\begin{align*}
     \mathbf{Q} = 
     \begin{pmatrix}
     \frac{q_{1}^c \Delta t^3}{3} & 0 & \frac{q_{1}^c \Delta t^2}{2} & 0 \\
@@ -123,14 +123,14 @@
     \frac{q_{1}^c \Delta t^2}{2} & 0 & q_{1}^c \Delta t & 0 \\
     0 & \frac{q_{2}^c \Delta t^2}{2} & 0 & q_{2}^c \Delta t
     \end{pmatrix}.
-\end{align}
+\end{align*}
 
 该动态系统的线性高斯状态空间模型（LGSSM）完整形式为：
 
-\begin{align}
+\begin{align*}
     \mathbf{x}_k &= \mathbf{A}_{k-1} \mathbf{x}_{k-1} + \mathbf{q}_{k-1}, \\
     \mathbf{y}_k &= \mathbf{H}_k \mathbf{x}_{k} + \mathbf{r}_{k},
-\end{align}
+\end{align*}
 
 其中模型参数设置如下：
 \begin{itemize}

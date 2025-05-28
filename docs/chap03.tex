@@ -17,9 +17,9 @@
 \end{itemize}
 
 回忆在未引入先验信息之前，对数似然函数的下界由式~\eqref{eq: ineq for EM final}给出：
-\begin{align}
+\begin{align*}
     \log p(\mathbf{y}_{1:T} \mid \mathbf{A}) \ge \mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)})。
-\end{align}
+\end{align*}
 
 为了引入先验信息，我们为 EM 框架导出一个新的下界：
 \begin{align}
@@ -27,9 +27,9 @@
 \end{align}
 
 为适应最小化问题，我们引入新的记号。令损失函数为负对数似然：
-\begin{align}
+\begin{align*}
     \mathcal{L}_T(\mathbf{A}) \triangleq \mathcal{L}_0(\mathbf{A}) + \mathcal{L}_{1:T}(\mathbf{A})，
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
     \item \(\mathcal{L}_0(\mathbf{A}) = -\log p(\mathbf{A})\) 是先验损失项，
@@ -37,9 +37,9 @@
 \end{itemize}
 
 采用该记号，我们的优化目标可由式~\eqref{eq: GraphEM argmax}重写为：
-\begin{align}
+\begin{align*}
     \widehat{\mathbf{A}} = \arg \min_{\mathbf{A}} \mathcal{L}_T(\mathbf{A})。
-\end{align}
+\end{align*}
 
 我们引入一个新的上界作为 GraphEM 算法中的目标函数：
 \begin{align}
@@ -48,9 +48,9 @@
 其中 \(\lambda\) 用于控制先验损失项 \(\mathcal{L}_0(\mathbf{A})\) 的权重。
 
 利用新记号重写式~\eqref{eq: ineq for GraphEM}，并改变不等号方向，可得上界形式的 EM 结构：
-\begin{align}
+\begin{align*}
     \mathcal{L}_T(\mathbf{A}) \le \mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)})。
-\end{align}
+\end{align*}
 
 采用目标函数 \(\mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)})\)，我们提出 GraphEM 算法，如算法~\ref{alg: abstract GraphEM algorithm} 所示。
 
@@ -72,9 +72,9 @@
 本节中，我们专注于计算目标函数 \(\mathfrak{Q}(\mathbf{A}, \mathbf{A}^{(n)})\)。
 
 回忆，对于线性高斯状态空间模型（LGSSM），下界 \(\mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)})\) 由式~\eqref{eq: Q for LGSSM}给出。由于我们只关心 \(\mathbf{A}\)，该表达式可简化为：
-\begin{align}
+\begin{align*}
     \mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)}) = - \frac{T}{2} \tr \left\{ \mathbf{Q}^{-1} \left[ \boldsymbol{\Sigma} - \mathbf{C} \mathbf{A}^{\mathsf{T}} - \mathbf{A} \mathbf{C}^{\mathsf{T}} + \mathbf{A} \boldsymbol{\Phi} \mathbf{A}^{\mathsf{T}} \right] \right\} + \constA,
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
     \item \(\boldsymbol{\Sigma} = \boldsymbol{\Sigma}(\mathbf{A}^{(n)})\)，由式~\eqref{eq: middle Sigma} 计算，
@@ -94,14 +94,14 @@
 \subsection{近端算子}
 
 设 \( f: \mathbb{R}^{n \times n} \to \mathbb{R} \) 是一个适当的、凸的、下半连续的函数。函数 \( f \) 在点 \(\tilde{\mathbf{A}} \in \mathbb{R}^{n \times n}\) 的\textit{近端算子}定义为：
-\begin{align}
+\begin{align*}
     \text{prox}_{f}(\tilde{\mathbf{A}}) = \arg\min_{\mathbf{A}} \left( f(\mathbf{A}) + \frac{1}{2} \| \mathbf{A} - \tilde{\mathbf{A}} \|^2_F \right)。
-\end{align}
+\end{align*}
 
 我们的目标函数由两项组成。首先，我们推导第一项 \(-\mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)})\) 的近端算子，其形式如下：
-\begin{align}
+\begin{align*}
     \mathrm{prox}_{-\vartheta\mathcal{Q}(\tilde{\mathbf{A}}, \mathbf{A}^{(n)})} (\tilde{\mathbf{A}}) = \mathrm{lyapuov} \left( \vartheta \mathbf{Q}^{-1}, \boldsymbol{\Phi}^{-1}, \tilde{\mathbf{A}} \boldsymbol{\Phi}^{-1} + \vartheta \mathbf{Q}^{-1} \mathbf{C} \boldsymbol{\Phi}^{-1} \right),
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
     \item \(\vartheta > 0\) 是缩放参数，
@@ -109,9 +109,9 @@
 \end{itemize}
 
 进一步地，若 \(\mathbf{Q} = \mathbf{I}_{n} \sigma^2_{\mathbf{Q}}\)，则近端算子可简化为：
-\begin{align}
+\begin{align*}
     \mathrm{prox}_{-\vartheta\mathcal{Q}(\tilde{\mathbf{A}}, \mathbf{A}^{(n)})} (\tilde{\mathbf{A}}) = \left( \frac{\vartheta\, T}{\sigma^2_{\mathbf{Q}}} \mathbf{C} + \tilde{\mathbf{A}} \right) \left( \frac{\vartheta}{\sigma^2_{\mathbf{Q}}} \boldsymbol{\Phi} + \mathbf{I}_{n} \right)^{-1},
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
     \item \(\sigma^2_{\mathbf{Q}} > 0\) 是过程噪声的方差，
@@ -136,10 +136,10 @@
 其中我们设置 \(\alpha = 1\)。
 
 在我们的具体问题中，两个近端算子分别为：
-\begin{align}
+\begin{align*}
     \operatorname{prox}_{\vartheta f_1}(\mathbf{A}^{(i)}) &\triangleq \arg\min_{\mathbf{A}} \left( -\mathcal{Q}(\mathbf{A}, \mathbf{A}^{(n)}) + \frac{1}{2\vartheta} \| \mathbf{A} - \mathbf{A}^{(i)} \|^2 \right), \\
     \operatorname{prox}_{\vartheta f_2}(\mathbf{A}^{(i)}) &\triangleq \arg\min_{\mathbf{A}} \left( \mathcal{L}_0(\mathbf{A}) + \frac{1}{2\vartheta} \| \mathbf{A} - \mathbf{A}^{(i)} \|^2 \right),
-\end{align}
+\end{align*}
 其中 \(\operatorname{prox}_{\vartheta f_1}(\mathbf{A}^{(i)})\) 和 \(\operatorname{prox}_{\vartheta f_2}(\mathbf{A}^{(i)})\) 的计算方法可参考前一节以及表~\ref{tab: reg prox table}。
 
 Douglas-Rachford 方法在解决结构化优化问题中表现出色，适用于凸和非凸场景。用于 M 步优化的显式迭代步骤列于算法~\ref{alg: Douglas-Rachford} 中。
@@ -166,9 +166,9 @@ Douglas-Rachford 方法在解决结构化优化问题中表现出色，适用于
 \subsection{稳定性约束}
 
 为了确保算法的稳定性，我们对初始转移矩阵 \(\mathbf{A}\) 施加约束。具体而言，我们要求 \(\mathbf{A}\) 的谱范数被一个常数 \(\delta < 1\) 所约束。该约束确保系统动力学保持稳定，并使优化过程具有良好的收敛性。约束集合 \(\mathcal{S}\) 定义如下：
-\begin{align}
+\begin{align*}
     \mathcal{S} = \left\{ \mathbf{A} \in \mathbb{R}^{n \times n} \mid \| \mathbf{A} \|_2 \le \delta < 1 \right\},
-\end{align}
+\end{align*}
 其中 \(\delta \in (0, 1)\) 是用户设定的参数，用于控制系统的稳定性。
 
 表~\ref{tab: convex constrain table} 给出了常见凸约束集合的示例及其对应的投影算子。这些约束对于在优化过程中保持转移矩阵 \(\mathbf{A}\) 位于可行区域内至关重要。

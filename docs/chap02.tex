@@ -26,10 +26,10 @@
 用数学术语来说，状态空间模型 (SSM) 中的最优滤波和平滑可以表述为统计反演问题。我们的目标是从一组噪声观测值 \(\{\mathbf{y}_1, \mathbf{y}_2, \dots\}\) 中估计一个未知的向量值时间序列 \(\{\mathbf{x}_0, \mathbf{x}_1, \mathbf{x}_2, \dots\}\)。为了方便记述，我们定义 \(\textbf{x}_{0:T} = \{ \textbf{x}_0, \textbf{x}_1, \dots, \textbf{x}_T \}\) 和 \(\textbf{y}_{1:T} = \{ \textbf{y}_1, \textbf{y}_2, \dots, \textbf{y}_T \}\)。
 
 贝叶斯滤波解决了一般概率状态空间模型中的状态估计问题，这些模型的特征如下：
-\begin{align}
+\begin{align*}
 \mathbf{x}_k &\sim p(\mathbf{x}_k \mid \mathbf{x}_{k-1}), \\
 \mathbf{y}_k &\sim p(\mathbf{y}_k \mid \mathbf{x}_k),
-\end{align}
+\end{align*}
 其中 \(k = 1, 2, \dots\)，其中：
 \begin{itemize}
 \item \(\mathbf{x}_k \in \R^n\) 表示系统在时间步 \(k\) 的状态，
@@ -40,9 +40,9 @@
 
 \subsection{用于最优过滤的贝叶斯推断}
 在 SSM 的背景下，主要关注的是估计给定相应观测值的所有状态的联合后验分布。该分布由以下公式给出：
-\begin{align}
+\begin{align*}
 p(\mathbf{x}_{0:T} \mid \mathbf{y}_{1:T}) = \frac{p(\mathbf{y}_{1:T} \mid \mathbf{x}_{0:T}) p(\mathbf{x}_{0:T})}{p(\mathbf{y}_{1:T})},
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
 \item \(p(\mathbf{x}_{0:T})\) 是状态的先验分布，
@@ -54,26 +54,26 @@ p(\mathbf{x}_{0:T} \mid \mathbf{y}_{1:T}) = \frac{p(\mathbf{y}_{1:T} \mid \mathb
 在实践中，我们通常对由联合后验推导的特定边际分布感兴趣。这些分布包括：
 \begin{itemize}
 \item \textit{滤波分布}，它根据所有过去和当前的观测值估计当前状态：
-\begin{align}
+\begin{align*}
 \left\{ p(\mathbf{x}_k \mid \mathbf{y}_{1:k}) \mid k = 1, \dots, T \right\}。
-\end{align}
+\end{align*}
 \item \textit{预测分布}，根据当前观测值预测未来状态：
-\begin{align}
+\begin{align*}
 \left\{ p(\mathbf{x}_{k+n} \mid \mathbf{y}_{1:k}) \mid k = 1, \dots, T, \, n = 1, 2, \dots \right\}。
-\end{align}
+\end{align*}
 \item \textit{平滑分布}，利用所有可用观测值改进过去的状态估计：
-\begin{align}
+\begin{align*}
 \left\{ p(\mathbf{x}_k \mid \mathbf{y}_{1:T}) \mid k = 1, \dots, T \right\}。
-\end{align}
+\end{align*}
 \end{itemize}
 这些分布构成了贝叶斯滤波和平滑的基础，从而能够在 SSM 中实现准确的状态估计和预测。
 
 \section{线性高斯状态空间模型}
 卡尔曼滤波器是贝叶斯滤波器的一个特例，其中动态模型和测量模型均为线性高斯模型。该模型由以下方程定义：
-\begin{align}
+\begin{align*}
 \mathbf{x}_k &= \mathbf{A}_{k-1} \mathbf{x}_{k-1} + \mathbf{q}_{k-1}, \\
 \mathbf{y}_k &= \mathbf{H}_k \mathbf{x}_k + \mathbf{r}_k,
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
 \item \(\mathbf{q}_{k-1} \sim \mathcal{N}(\mathbf{0}, \mathbf{Q}_{k-1})\) 是过程噪声，假设为具有零均值和协方差的高斯分布\(\mathbf{Q}_{k-1}\),
@@ -84,10 +84,10 @@ p(\mathbf{x}_{0:T} \mid \mathbf{y}_{1:T}) = \frac{p(\mathbf{y}_{1:T} \mid \mathb
 \end{itemize}
 
 或者，该模型可以用概率术语表示为：
-\begin{align}
+\begin{align*}
  p(\mathbf{x}_k \mid \mathbf{x}_{k-1}) &\sim \mathcal{N}(\mathbf{x}_k \mid \mathbf{A}_{k-1} \mathbf{x}_{k-1}, \mathbf{Q}_{k-1}), \\
  p(\mathbf{y}_k \mid \mathbf{x}_k) &\sim \mathcal{N}(\mathbf{y}_k \mid \mathbf{H}_k \mathbf{x}_k, \mathbf{R}_k)。
-\end{align}
+\end{align*}
 
 \begin{figure}[tb]
 \centering
@@ -108,10 +108,10 @@ p(\mathbf{x}_{0:T} \mid \mathbf{y}_{1:T}) = \frac{p(\mathbf{y}_{1:T} \mid \mathb
 
 \subsubsection*{预测步骤}
 预测步骤使用动态模型将状态估计及其不确定性从上一个时间步传播到当前时间步。预测步骤的公式如下：
-\begin{align}
+\begin{align*}
 \mathbf{m}_k^- &= \mathbf{A}_{k-1} \mathbf{m}_{k-1}, \\
 \mathbf{P}_k^- &= \mathbf{A}_{k-1} \mathbf{P}_{k-1} \mathbf{A}_{k-1}^\mathsf{T} + \mathbf{Q}_{k-1}.
-\end{align}
+\end{align*}
 其中，\(\mathbf{m}_k^-\) 和 \(\mathbf{P}_k^-\) 分别表示预测状态均值和协方差。
 
 \subsubsection*{更新步骤}
@@ -127,9 +127,9 @@ p(\mathbf{x}_{0:T} \mid \mathbf{y}_{1:T}) = \frac{p(\mathbf{y}_{1:T} \mid \mathb
 
 \subsection{卡尔曼平滑器}
 卡尔曼平滑器扩展了卡尔曼滤波器，它使用所有可用的观测值 \(\mathbf{y}_{1:T}\) 来估计每个时间步 \(k\) 的状态。具体来说，它计算平滑分布：
-\begin{align}
+\begin{align*}
 p(\mathbf{x}_k \mid \mathbf{y}_{1:T}) \sim \mathcal{N}(\mathbf{x}_k \mid \mathbf{m}_k^s, \mathbf{P}_k^s),
-\end{align}
+\end{align*}
 其中 \(\mathbf{m}_k^s\) 和 \(\mathbf{P}_k^s\) 分别是平滑后的状态均值和协方差。
 
 \subsubsection*{向后递归方程}
@@ -137,17 +137,17 @@ p(\mathbf{x}_k \mid \mathbf{y}_{1:T}) \sim \mathcal{N}(\mathbf{x}_k \mid \mathbf
 
 \section{状态空间模型中的参数估计}
 在贝叶斯框架中，缺失参数 \(\boldsymbol{\theta} \in \R^d\) 被视为具有先验分布 \(p(\boldsymbol{\theta})\) 的随机变量。包含这些缺失参数的状态空间模型 (SSM) 定义为：
-\begin{align}
+\begin{align*}
 \boldsymbol{\theta} &\sim p(\boldsymbol{\theta}), \\
 \mathbf{x}_0 &\sim p(\mathbf{x}_0 \mid \boldsymbol{\theta}), \\
 \mathbf{x}_k &\sim p(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}), \\
 \mathbf{y}_k &\sim p(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta})。
-\end{align}
+\end{align*}
 
 参数估计的基本方法基于贝叶斯规则，该规则将给定观测值的状态和参数的联合后验分布表示为：
-\begin{align}
+\begin{align*}
 p(\mathbf{x}_{0:T}, \boldsymbol{\theta} \mid \mathbf{y}_{1:T}) = \frac{p(\mathbf{y}_{1:T} \mid \mathbf{x}_{0:T}, \boldsymbol{\theta}) \, p(\mathbf{x}_{0:T} \mid \boldsymbol{\theta}) \, p(\boldsymbol{\theta})}{p(\mathbf{y}_{1:T})},
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
 \item \(p(\mathbf{x}_{0:T} \mid \boldsymbol{\theta}) = p(\mathbf{x}_0 \mid \boldsymbol{\theta}) \prod_{k=1}^{T} p(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta})\) 是状态的先验分布，
@@ -155,44 +155,44 @@ p(\mathbf{x}_{0:T}, \boldsymbol{\theta} \mid \mathbf{y}_{1:T}) = \frac{p(\mathbf
 \end{itemize}
 
 参数估计的核心目标是找到最大化边缘后验分布的后验模态 \(\boldsymbol{\theta}\)：
-\begin{align}
+\begin{align*}
 \boldsymbol{\theta} = \arg \max_{\boldsymbol{\theta}} p(\boldsymbol{\theta} \mid \mathbf{y}_{1:T})。
-\end{align}
+\end{align*}
 这本质上是一个优化问题。然而，在解决这个问题之前，我们必须先解决计算 \(p(\boldsymbol{\theta} \mid \mathbf{y}_{1:T})\) 的难题。
 
 为了集中计算 \(p(\boldsymbol{\theta} \mid \mathbf{y}_{1:T})\)，即 \(\boldsymbol{\theta}\) 的边缘后验分布，直接求解方法涉及对状态进行边缘化：
-\begin{align}
+\begin{align*}
 p(\boldsymbol{\theta} \mid \mathbf{y}_{1:T}) = \int p(\mathbf{x}_{0:T}, \boldsymbol{\theta} \mid \mathbf{y}_{1:T}) \, \mathrm{d} \mathbf{x}_{0:T}.
-\end{align}
+\end{align*}
 
 遗憾的是，计算这个高维积分极具挑战性，而且随着测量值的增多，计算难度也会越来越大。为了解决这个问题，我们提出了一些参数估计方法，该方法可以近似边缘后验分布 \(p(\boldsymbol{\theta} \mid \mathbf{y}_{1:T})\)，而无需明确构建联合后验分布 \(p(\mathbf{x}_{0:T}, \boldsymbol{\theta} \mid \mathbf{y}_{1:T})\)。具体来说，我们关注：
-\begin{align}
+\begin{align*}
 p(\boldsymbol{\theta} \mid \mathbf{y}_{1:T}) \propto p(\mathbf{y}_{1:T} \mid \boldsymbol{\theta}) p(\boldsymbol{\theta})。
-\end{align}
+\end{align*}
 
 因此，问题简化为计算 \textit{似然值} \(p(\mathbf{y}_{1:T} \mid \boldsymbol{\theta})\)。 （先验项 \(p(\boldsymbol{\theta})\) 是根据先验知识选择的，而归一化常数 \(p(\mathbf{y}_{1:T})\) 则被贝叶斯理论所避免。）
 
 估计这种似然值的关键在于状态空间模型中的递归计算，也称为因式分解或预测误差分解：
-\begin{align}
+\begin{align*}
 p(\mathbf{y}_{1:T} \mid \boldsymbol{\theta}) = \prod^T_{k=1} p(\mathbf{y}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}),
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
 \item \(p(\mathbf{y}_1 \mid \mathbf{y}_{1:0}, \boldsymbol{\theta}) \triangleq p(\mathbf{y}_1 \mid \boldsymbol{\theta})\)。
 \end{itemize}
 
 处理 \(p(\mathbf{y}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta})\) 的核心思想是：
-\begin{align}
+\begin{align*}
  p(\mathbf{y}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) &= \int p(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}) \, p(\mathbf{x}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) \, \mathrm{d} \mathbf{x}_k, \\
  p(\mathbf{x}_k \mid \mathbf{y}_{1:k}, \boldsymbol{\theta}) &= \frac{p(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}) \, p(\mathbf{x}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta})}{p(\mathbf{y}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta})},
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
  \item \(p(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta})\) 是 \textit{测量模型}，
  \item \(p(\mathbf{x}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta})\) 是状态 \(\mathbf{x}_k\) 的 \textit{预测分布}，由以下公式给出：
-\begin{align}
+\begin{align*}
 p(\mathbf{x}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) = \int p(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}) p(\mathbf{x}_{k-1} \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) \, \mathrm{d} \mathbf{x}_{k-1}。
-\end{align}
+\end{align*}
 \item \(p(\mathbf{x}_k \mid \mathbf{y}_{1:k}, \boldsymbol{\theta})\) 是 \textit{贝叶斯滤波器}。
 \end{itemize}
 
@@ -201,10 +201,10 @@ p(\mathbf{x}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) = \int p(\mathbf{x}
 \subsection{具有缺失参数的线性高斯状态空间模型}
 
 具有缺失参数 \(\boldsymbol{\theta}\) 的线性高斯状态空间模型（LGSSM）定义为：
-\begin{align}
+\begin{align*}
     \mathbf{x}_k &= \mathbf{A}(\boldsymbol{\theta}) \, \mathbf{x}_{k-1} + \mathbf{q}_{k-1}, \\
     \mathbf{y}_k &= \mathbf{H}(\boldsymbol{\theta}) \, \mathbf{x}_k + \mathbf{r}_k,
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
     \item \(\mathbf{q}_{k-1} \sim \mathcal{N}(\mathbf{0}, \mathbf{Q}(\boldsymbol{\theta}))\) 和 \(\mathbf{r}_{k} \sim \mathcal{N}(\mathbf{0}, \mathbf{R}(\boldsymbol{\theta}))\) 分别是过程噪声和测量噪声，
@@ -221,9 +221,9 @@ p(\mathbf{x}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) = \int p(\mathbf{x}
 p(\mathbf{y}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) \sim \mathcal{N}(\mathbf{H}_k(\boldsymbol{\theta}) \, \mathbf{m}_k^-(\boldsymbol{\theta}), \mathbf{S}_k(\boldsymbol{\theta})).
 \]
 因此，对数似然 \(\log p(\mathbf{y}_{1:T} \mid \boldsymbol{\theta})\) 可以表示为从正态分布推导出的递归求和项：
-\begin{align}
+\begin{align*}
     \log p(\mathbf{y}_{1:T} \mid \boldsymbol{\theta}) = \sum^T_{k=1} \left( \frac{1}{2} \log | 2 \pi \, \mathbf{S}_k(\boldsymbol{\theta}) | + \frac{1}{2} \mathbf{v}_k^{\mathsf{T}}(\boldsymbol{\theta}) \, \mathbf{S}_k^{-1}(\boldsymbol{\theta}) \, \mathbf{v}_k (\boldsymbol{\theta}) \right),
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
     \item \(\mathbf{v}_k (\boldsymbol{\theta})\) 和 \(\mathbf{S}_k(\boldsymbol{\theta})\) 分别是残差值和残差协方差，定义见卡尔曼滤波器中的方程~\eqref{eq: kalman filter vk} 和方程~\eqref{eq: kalman filter Sk}，
@@ -231,9 +231,9 @@ p(\mathbf{y}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) \sim \mathcal{N}(\m
 \end{itemize}
 
 令 \(\ell(\boldsymbol{\theta}) \triangleq \log p(\mathbf{y}_{1:T} \mid \boldsymbol{\theta})\)。为了最大化对数似然，我们使用梯度下降算法，该算法通过以下方式迭代更新参数估计 \(\boldsymbol{\theta}\)：
-\begin{align}
+\begin{align*}
     \boldsymbol{\theta}^{(i+1)} = \boldsymbol{\theta}^{(i)} - \eta \, \nabla_{\boldsymbol{\theta}} \ell(\boldsymbol{\theta}^{(i)}),
-\end{align}
+\end{align*}
 其中：
 \begin{itemize}
     \item \(\eta > 0\) 是学习率，控制更新的步长，
@@ -250,9 +250,9 @@ p(\mathbf{y}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) \sim \mathcal{N}(\m
     \log p(\mathbf{y}_{1:T} \mid \boldsymbol{\theta}) \ge F(q(\mathbf{x}_{0:T}), \boldsymbol{\theta}), \label{eq: ineq for EM}
 \end{align}
 其中二元函数 \(F(\cdot)\) 定义为：
-\begin{align}
+\begin{align*}
     F(q(\mathbf{x}_{0:T}), \boldsymbol{\theta}) = \int q(\mathbf{x}_{0:T}, \boldsymbol{\theta}) \, \log \frac{p(\mathbf{x}_{0:T}, \mathbf{y}_{1:T} \mid \boldsymbol{\theta})}{q(\mathbf{x}_{0:T}, \boldsymbol{\theta})} \, \mathrm{d} \mathbf{x}_{0:T}.
-\end{align}
+\end{align*}
 
 这自然引出了算法~\ref{alg: abstract EM}，用于求解这个优化问题。
 
@@ -277,9 +277,9 @@ p(\mathbf{y}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) \sim \mathcal{N}(\m
 \end{align}
 
 注意，方程~\eqref{eq: full lower bound} 中的第二项不依赖于 \(\boldsymbol{\theta}\)。因此，算法~\ref{alg: abstract EM} 中的 M 步骤优化可以简化，只考虑方程~\eqref{eq: full lower bound} 中的第一项作为对数似然的新下界，记作 \(\mathcal{Q}(\boldsymbol{\theta}, \boldsymbol{\theta}^{(n)})\)：
-\begin{align}
+\begin{align*}
     \mathcal{Q}(\boldsymbol{\theta}, \boldsymbol{\theta}^{(n)}) = \int p(\mathbf{x}_{0:T} \mid \mathbf{y}_{1:T}, \boldsymbol{\theta}^{(n)}) \log p(\mathbf{x}_{0:T}, \mathbf{y}_{1:T} \mid \boldsymbol{\theta}) \, \mathrm{d} \mathbf{x}_{0:T}.
-\end{align}
+\end{align*}
 
 因此，我们得到了最终的迭代不等式，改编自方程~\eqref{eq: ineq for EM}：
 \begin{align}
@@ -335,7 +335,7 @@ p(\mathbf{y}_k \mid \mathbf{y}_{1:k-1}, \boldsymbol{\theta}) \sim \mathcal{N}(\m
 
 这引出了线性高斯状态空间模型的 EM 算法的实际实现，如算法~\ref{alg: EM algorithm for LGSSM} 所示。
 
-\begin{algorithm}[tb]
+\begin{algorithm}[h]
     \caption{线性高斯状态空间模型的 EM 算法}
     \label{alg: EM algorithm for LGSSM}
     \begin{algorithmic}[1]
