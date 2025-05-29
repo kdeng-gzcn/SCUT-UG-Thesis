@@ -1,8 +1,8 @@
-\contentsline {chapter}{摘\hspace {\ccwd }要}{I}{section*.4}%
-\contentsline {paragraph}{\heiti {关键词：}}{I}{paragraph*.5}%
-\contentsline {chapter}{Abstract}{II}{section*.6}%
-\contentsline {paragraph}{\textbf {Keywords:}}{II}{paragraph*.7}%
-\contentsline {chapter}{目\hspace {\ccwd }录}{III}{section*.8}%
+\contentsline {chapter}{摘\hspace {\ccwd }要}{I}{section*.2}%
+\contentsline {paragraph}{\heiti {关键词：}}{I}{paragraph*.3}%
+\contentsline {chapter}{Abstract}{II}{section*.4}%
+\contentsline {paragraph}{\textbf {Keywords:}}{II}{paragraph*.5}%
+\contentsline {chapter}{目\hspace {\ccwd }录}{III}{section*.6}%
 \contentsline {chapter}{\numberline {第一章\hspace {.3em}}绪论}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}问题背景}{1}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}现有方法}{1}{subsection.1.1.1}%
@@ -31,7 +31,7 @@
 \contentsline {chapter}{\numberline {第四章\hspace {.3em}}数值实验}{20}{chapter.4}%
 \contentsline {section}{\numberline {4.1}汽车的动态模型}{20}{section.4.1}%
 \contentsline {section}{\numberline {4.2}不同图结构下的正则化分析}{24}{section.4.2}%
-\contentsline {chapter}{结论}{29}{chapter*.30}%
-\contentsline {chapter}{参考文献}{30}{chapter*.31}%
-\contentsline {chapter}{致谢}{33}{chapter*.32}%
+\contentsline {chapter}{结论}{29}{chapter*.28}%
+\contentsline {chapter}{参考文献}{30}{chapter*.29}%
+\contentsline {chapter}{致谢}{33}{chapter*.30}%
 \contentsline {chapter}{\numberline {附录 A\hspace {.3em}}其他图类型}{34}{appendix.A}%

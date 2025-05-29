@@ -433,12 +433,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm0900.tfm
 OUTPUT main.xdv
-INPUT ./image/签名.png
-INPUT ./image/签名.png
-INPUT ./image/签名.png
-INPUT ./image/签名.png
-INPUT ./image/签名.png
-INPUT ./image/签名.png
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxmi7.tfm
